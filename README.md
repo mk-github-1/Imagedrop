@@ -4,16 +4,16 @@ Imagedrop.js  v2.0.0 (2021-07-26)
 Copyright 2021 yuchan.
 Licensed under the MIT license.
 
-(javascriptライブラリの説明)
+## (javascriptライブラリの説明)
 これは画像ファイルをドラッグ＆ドロップ、またはダブルクリックして選択するためのjavascriptライブラリです。
 
-(前提条件)
+## (前提条件)
 ・Google ChromeまたはMicrosoft Edgeで動作します。IEは開発終了していますのでサポートしません。
 ・ファイルアップロードのPost処理にはaxiosを使用しています。axiosのライブラリをインストールして下さい。
 ・CSRF対策用のコードを設定しないと動作しません。this.imagedrop.setRequestVerificationTokenIdName("__RequestVerificationToken")のように、フレームワークに合わせてidを指定して下さい。
 ・upload時のサーバー側の戻り値として、成功時はfileNameを受け取り。失敗時はメッセージを受け取ってalert表示をするようにしています。サーバー側ではその処理を追加して下さい。
 
-(使い方)
+## (使い方)
 ・html
 <html>
     <body>
