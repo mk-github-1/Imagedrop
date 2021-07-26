@@ -4,6 +4,9 @@
  * Copyright 2021 yuchan.
  * Licensed under the MIT license.
  *
+ * (javascriptライブラリの説明)
+ * これは画像ファイルをドラッグ＆ドロップ、またはダブルクリックして選択するためのjavascriptライブラリです。
+ *
  * (前提条件)
  * ・Google ChromeまたはMicrosoft Edgeで動作します。IEは開発終了していますのでサポートしません。
  * ・ファイルアップロードのPost処理にはaxiosを使用しています。axiosのライブラリをインストールして下さい。
