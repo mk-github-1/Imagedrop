@@ -1,0 +1,24 @@
+﻿/*
+ * Imagedrop.js  v2.0.0 (2021-07-26)
+ * Copyright 2021 yuchan.
+ * Licensed under the MIT license.
+ */
+
+.imagedrop {
+    margin: 0px;
+    padding: 0px;
+}
+
+.drag-and-drop-area {
+    width: 100%;
+    height: 600px;
+    border: 1px solid #aaaaaa;
+    overflow: scroll;
+    margin: 0px;
+    padding: 0px;
+}
+
+.default-message {
+    padding-top: 10px;
+    text-align: center;
+}
