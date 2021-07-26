@@ -29,16 +29,6 @@ Copyright 2021 yuchan. Licensed under the MIT license.
                 <input type="hidden" id="fileName" />
             </div>
          </div>
-
-         <!-- ②imagedropのデータを反映する場所です -->
-         <div class="col-md-6">
-            <div class="content-main">
-                <form>
-                    <input type="hidden" v-if="viewModel" v-bind:value="viewModel.TransactionId" />
-                    <input type="hidden" v-if="viewModel" v-model.trim="viewModel.FileName" />
-                </form>
-            </div>
-        </div>
     <body>
 </html>
 ```
@@ -64,22 +54,5 @@ Copyright 2021 yuchan. Licensed under the MIT license.
     // ファイル名の設定または取得
     this.imagedrop.setFileName(fileName);
     this.imagedrop.getFileName();
-
-    // Vue.js3を使う場合
-    <!--
-        this.imagedrop = new Imagedrop();
-        this.imagedrop.setCheckedUser(this.isCheckedUser);
-        this.imagedrop.setUploadUrl(this.uploadUrl);
-        this.imagedrop.setDirectoryPath("xxx");
-        this.imagedrop.setRequestVerificationTokenIdName("__RequestVerificationToken");
-
-        // setTransactionは必要時のみ。
-        this.imagedrop.setTransactionIdPropertyName("xxx");
-        this.imagedrop.setTransactionId(this.transactionId);
-        
-        // ファイル名の設定または取得
-        this.imagedrop.setFileName(this.viewModel.FileName);
-        this.imagedrop.getFileName();
-    -->
 </script>
 ```
