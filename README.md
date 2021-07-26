@@ -22,7 +22,7 @@ Copyright 2021 yuchan. Licensed under the MIT license.
 `
 <html>
     <body>
-        // ①imagedropで利用する場所です。
+        <!-- ①imagedropで利用する場所です。 -->
         <div class="col-md-6">
             <div class="content-main">
                 <form id="imagedrop" class="imagedrop" enctype="multipart/form-data"></form>
@@ -31,7 +31,7 @@ Copyright 2021 yuchan. Licensed under the MIT license.
             </div>
          </div>
 
-         // ②imagedropのデータを反映する場所です
+         <!-- ②imagedropのデータを反映する場所です -->
          <div class="col-md-6">
             <div class="content-main">
                 <form>
