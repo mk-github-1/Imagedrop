@@ -8,31 +8,22 @@
  * これは画像ファイルをドラッグ＆ドロップ、またはダブルクリックして選択するためのjavascriptライブラリです。
  *
  * (前提条件)
- * ・Google ChromeまたはMicrosoft Edgeで動作します。IEは開発終了していますのでサポートしません。
+ * ・imagedrop.jsとimagedrop.cssのファイルを読み込みしてください。
  * ・ファイルアップロードのPost処理にはaxiosを使用しています。axiosのライブラリをインストールして下さい。
+ * ・Google ChromeまたはMicrosoft Edgeで動作します。IEは開発終了していますのでサポートしません。
  * ・CSRF対策用のコードを設定しないと動作しません。this.imagedrop.setRequestVerificationTokenIdName("__RequestVerificationToken")のように、フレームワークに合わせてidを指定して下さい。
  * ・upload時のサーバー側の戻り値として、成功時はfileNameを受け取り。失敗時はメッセージを受け取ってalert表示をするようにしています。サーバー側ではその処理を追加して下さい。
+ * ・Vue.js中でも利用可能です。
  * 
  * (使い方)
  * ・html
  * <html>
  *     <body>
- *         // ①imagedropで利用する場所です。
  *         <div class="col-md-6">
  *             <div class="content-main">
  *                 <form id="imagedrop" class="imagedrop" enctype="multipart/form-data"></form>
  *                 <input type="hidden" id="transactionId" />
  *                 <input type="hidden" id="fileName" />
- *             </div>
- *         </div>
- *
- *         // ②imagedropのデータを反映する場所です
- *         <div class="col-md-6">
- *             <div class="content-main">
- *                 <form>
- *                     <input type="hidden" v-if="viewModel" v-bind:value="viewModel.TransactionId" />
- *                     <input type="hidden" v-if="viewModel" v-model.trim="viewModel.FileName" />
- *                 </form>
  *             </div>
  *         </div>
  *     <body>
@@ -58,23 +49,6 @@
  *     // ファイル名の設定または取得
  *     this.imagedrop.setFileName(fileName);
  *     this.imagedrop.getFileName();
- *
- *     // Vue.js3を使う場合
- *     <!--
- *         this.imagedrop = new Imagedrop();
- *         this.imagedrop.setCheckedUser(this.isCheckedUser);
- *         this.imagedrop.setUploadUrl(this.uploadUrl);
- *         this.imagedrop.setDirectoryPath("xxx");
- *         this.imagedrop.setRequestVerificationTokenIdName("__RequestVerificationToken");
- *
- *         // setTransactionは必要時のみ。
- *         this.imagedrop.setTransactionIdPropertyName("xxx");
- *         this.imagedrop.setTransactionId(this.transactionId);
- *         
- *         // ファイル名の設定または取得
- *         this.imagedrop.setFileName(this.viewModel.FileName);
- *         this.imagedrop.getFileName();
- *     -->
  * </script>
  */
 
