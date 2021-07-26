@@ -1,8 +1,6 @@
 # Imagedrop
 
-Imagedrop.js  v2.0.0 (2021-07-26)
-
-Copyright 2021 yuchan. Licensed under the MIT license.
+Imagedrop.js  v2.0.0 (2021-07-26)     Licensed under the MIT license.
 
 これは画像ファイルをドラッグ＆ドロップ、またはダブルクリックして選択するためのjavascriptライブラリです。
 
