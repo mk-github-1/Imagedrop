@@ -51,3 +51,22 @@ Imagedrop.js  v2.0.0 (2021-07-26)     Licensed under the MIT license.
     this.imagedrop.getFileName();
 </script>
 ```
+
+# テンプレートの仕組み
+																
+* HTMLに上記の使い方のコードを設定することで、new Imagedrop() 時にform下に下記のテンプレートを展開
+```																				
+<form id="imagedrop" class="imagedrop" enctype="multipart/form-data"></form>
+
+<div class="drag-and-drop-area" id="drag-and-drop-area">																					
+	<input type="file" id="files" name="files" accept="image/jpeg" style="display: none" multiple />																				
+	<div class="default-message" id="defaultMessage">																				
+			<p>画像ファイルをドラッグ＆ドロップ、またはダブルクリックして選択</p>																		
+			<p>(.jpgファイル、1MBまで)</p>																		
+	</div>																				
+	<div class="preview-image" id="previewImage" style="display: none"></div>																				
+</div>																					
+<input type="hidden" id="transactionId" />																					
+<input type="hidden" id="fileName" />																					
+```
+
