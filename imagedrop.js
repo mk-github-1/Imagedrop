@@ -296,7 +296,7 @@ class Imagedrop {
             this._fileName = null;
         }
 
-        // focusが当たっていたら削除する
+        // focusが当たっていたらクリアする
         document.activeElement.blur();
 
         // Fire event (表示領域の調整用)
