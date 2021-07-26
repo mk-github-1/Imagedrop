@@ -19,7 +19,6 @@ Copyright 2021 yuchan. Licensed under the MIT license.
 ```
 <html>
     <body>
-        <!-- ①imagedropで利用する場所です。 -->
         <div class="col-md-6">
             <div class="content-main">
                 <form id="imagedrop" class="imagedrop" enctype="multipart/form-data"></form>
