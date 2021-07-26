@@ -22,6 +22,7 @@ Copyright 2021 yuchan. Licensed under the MIT license.
 
 ・html
 
+'
 <html>
     <body>
         // ①imagedropで利用する場所です。
@@ -44,9 +45,10 @@ Copyright 2021 yuchan. Licensed under the MIT license.
         </div>
     <body>
 </html>
-
+'
+        
 ・javascript
-
+'
 <script>
     // 通常
     const uploadUrl = "xxx";
@@ -83,4 +85,5 @@ Copyright 2021 yuchan. Licensed under the MIT license.
         this.imagedrop.setFileName(this.viewModel.FileName);
         this.imagedrop.getFileName();
     -->
- </script>
+</script>
+'
