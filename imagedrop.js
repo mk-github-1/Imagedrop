@@ -40,7 +40,7 @@
  *     this.imagedrop.setCheckedUser(true);
  *     this.imagedrop.setUploadUrl(uploadUrl);
  *     this.imagedrop.setDirectoryPath("xxx");
- *     this.imagedrop.setRequestVerificationTokenIdName("__RequestVerificationToken");
+ *     this.imagedrop.setRequestVerificationTokenName("__RequestVerificationToken");
  *
  *     // setTransactionは必要時のみ。
  *     this.imagedrop.setTransactionIdPropertyName("xxx");
@@ -176,8 +176,8 @@ class Imagedrop {
         this._directoryPath = directoryPath;
     }
 
-    setRequestVerificationTokenIdName(requestVerificationTokenIdName) {
-        this._requestVerificationTokenIdName = requestVerificationTokenIdName;
+    setRequestVerificationTokenName(requestVerificationTokenName) {
+        this._requestVerificationTokenName = requestVerificationTokenName;
     }
 
     setTransactionIdPropertyName(transactionIdPropertyName) {
@@ -243,8 +243,8 @@ class Imagedrop {
             formData.append(this._transactionIdPropertyName, this._transactionId);
         }
 
-        const requestVerificationToken = document.getElementsByName(this._requestVerificationTokenIdName)[0].value;
-
+        const requestVerificationToken = document.getElementsByName(this._requestVerificationTokenName)[0].value;
+　
         // axios
         axios({
             method: "post",
