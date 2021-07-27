@@ -60,6 +60,7 @@ Imagedrop  v2.0.0 (2021-07-26)     Licensed under the MIT license.
 ```
 <form id="imagedrop" class="imagedrop" enctype="multipart/form-data"></form>
 
+<!-- ここから　-->
 <div class="drag-and-drop-area" id="drag-and-drop-area">
     <input type="file" id="files" name="files" accept="image/jpeg" style="display: none" multiple />
     <div class="default-message" id="defaultMessage">
@@ -68,6 +69,7 @@ Imagedrop  v2.0.0 (2021-07-26)     Licensed under the MIT license.
     </div>
     <div class="preview-image" id="previewImage" style="display: none"></div>
 </div>
+<!-- ここまで -->
 
 <input type="hidden" id="transactionId" />
 <input type="hidden" id="fileName" />
