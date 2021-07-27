@@ -229,7 +229,6 @@ class Imagedrop {
 
         if (dragAndDropMode) {
             formData = new FormData(this._form);
-            // this._inputFile.parentNode.removeChild(this._inputFile);
 
             const files = this._files;
             for (let i = 0; i < files.length; i++) {
