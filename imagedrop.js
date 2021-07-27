@@ -5,7 +5,7 @@
  * Licensed under the MIT license.
  *
  * (javascriptライブラリの説明)
- * これはform下に画像ファイルをドラッグ＆ドロップ、またはダブルクリックして選択するエリアを提供するためのjavascriptの軽量なライブラリです。
+ * これはformタグ下に、画像ファイルをドラッグ＆ドロップ、またはダブルクリックして選択するエリアを提供するためのjavascriptの軽量なライブラリです。
  *
  * (前提条件)
  * ・imagedrop.jsとimagedrop.cssのファイルを読み込みしてください。
