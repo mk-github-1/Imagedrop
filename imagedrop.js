@@ -203,8 +203,8 @@ class Imagedrop {
 
         let file = files[0];
         const fileName = file.name.toLowerCase();
-        const pos = fileName.lastIndexOf('.');
-        const fileExtension = fileName.slice(pos);
+        const position = fileName.lastIndexOf('.');
+        const fileExtension = fileName.slice(position);
 
         let fileType = file.type;
 
