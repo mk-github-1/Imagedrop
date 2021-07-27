@@ -9,7 +9,7 @@ Imagedrop  v2.0.0 (2021-07-26)     Licensed under the MIT license.
 * imagedrop.jsとimagedrop.cssのファイルを読み込みしてください。
 * ファイルアップロードのPost処理にはaxiosを使用しています。axiosのライブラリをインストールして下さい。
 * Google ChromeまたはMicrosoft Edgeで動作します。IEは開発終了していますのでサポートしません。
-* CSRF対策用のコードを設定しないと動作しません。this.imagedrop.setRequestVerificationTokenIdName("__RequestVerificationToken")のように、フレームワークに合わせてidを指定して下さい。
+* CSRF対策用のコードを設定しないと動作しません。this.imagedrop.setRequestVerificationTokenName("__RequestVerificationToken")のように、フレームワークに合わせてidを指定して下さい。
 * upload時のサーバー側の戻り値として、成功時はfileNameを受け取り。失敗時はメッセージを受け取ってalert表示をするようにしています。サーバー側ではその処理を追加して下さい。
 * フレームワークに依存しないように作成しています。HTML中のプレーンなidとclassをメインで使用しています。Vue.jsと組み合わせて利用することもすることも可能です。
 
@@ -42,7 +42,7 @@ Imagedrop  v2.0.0 (2021-07-26)     Licensed under the MIT license.
     this.imagedrop.setCheckedUser(true);
     this.imagedrop.setUploadUrl(uploadUrl);
     this.imagedrop.setDirectoryPath("xxx");
-    this.imagedrop.setRequestVerificationTokenIdName("__RequestVerificationToken");
+    this.imagedrop.setRequestVerificationTokenName("__RequestVerificationToken");
 
     // setTransactionは必要時のみ。
     this.imagedrop.setTransactionIdPropertyName("xxx");
