@@ -60,7 +60,7 @@ Imagedrop  v2.0.1 (2021-07-26)     Licensed under the MIT license.
 ```
 <form id="imagedrop" class="imagedrop" enctype="multipart/form-data"></form>
 
-<!-- ここから　-->
+<!-- テンプレートはここから　-->
 <div class="drag-and-drop-area" id="drag-and-drop-area">
     <input type="file" id="files" name="files" accept="image/jpeg" style="display: none" multiple />
     <div class="default-message" id="defaultMessage">
