@@ -1,6 +1,6 @@
 # Imagedrop
 
-Imagedrop  v2.0.0 (2021-07-26)     Licensed under the MIT license.
+Imagedrop  v2.0.1 (2021-07-26)     Licensed under the MIT license.
 
 これはformタグ下に、画像ファイルをドラッグ＆ドロップ、またはダブルクリックして選択するエリアを提供するためのjavascriptの軽量なライブラリです。
 
