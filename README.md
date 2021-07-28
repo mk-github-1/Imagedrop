@@ -56,7 +56,7 @@ Imagedrop  v2.0.1 (2021-07-26)     Licensed under the MIT license.
 
 # テンプレートの仕組み
 																
-* HTMLに上記の使い方のコードを設定することで、new Imagedrop() 時にform下に下記のテンプレートを展開
+* HTMLに上記の使い方のformタグを設置することで、new Imagedrop() 時にform下に下記のテンプレートを展開
 ```
 <form id="imagedrop" class="imagedrop" enctype="multipart/form-data"></form>
 
