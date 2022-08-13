@@ -1,5 +1,5 @@
 /*
- * Imagedrop.js  v2.0.3 (2022-03-06)
+ * Imagedrop.js  v2.0.3 (2022-08-01)
  *
  * Copyright 2021 yuchan1.
  * Licensed under the MIT license.
