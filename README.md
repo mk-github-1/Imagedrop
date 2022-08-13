@@ -1,21 +1,23 @@
 # Imagedrop
 
-Imagedrop  v2.0.1 (2021-07-26)     Licensed under the MIT license.
+Imagedrop  v2.0.3 (2021-03-06)     Licensed under the MIT license.
 
-これはformタグ下に、画像ファイルをドラッグ＆ドロップ、またはダブルクリックして選択するエリアを提供するためのjavascriptの軽量なライブラリです。
+# javascriptライブラリの説明
+
+これはformタグ下に、画像ファイルをドラッグ＆ドロップ、またはダブルクリックして選択するエリアを提供し、画像をアップロードをするためのjavascriptの軽量なライブラリです。
 
 # 前提条件
 
-* imagedrop.jsとimagedrop.cssのファイルを読み込みしてください。
-* ファイルアップロードのPost処理にはaxiosを使用しています。axiosのライブラリをインストールして下さい。
-* Google ChromeまたはMicrosoft Edgeで動作します。IEは開発終了していますのでサポートしません。
-* CSRF対策用のコードを設定しないと動作しません。this.imagedrop.setRequestVerificationTokenName("__RequestVerificationToken")のように、フレームワークに合わせてidを指定して下さい。
-* upload時のサーバー側の戻り値として、成功時はfileNameを受け取り。失敗時はメッセージを受け取ってalert表示をするようにしています。サーバー側ではその処理を追加して下さい。
-* フレームワークに依存しないように作成しています。HTML中のプレーンなidとclassをメインで使用しています。Vue.jsと組み合わせて利用することもすることも可能です。
+ * ・imagedrop.jsとimagedrop.cssのファイルを読み込みしてください。
+ * ・ファイルアップロードのPost処理にはaxiosを使用しています。axiosのライブラリをインストールして下さい。
+ * ・Google ChromeまたはMicrosoft Edgeで動作します。
+ * ・CSRF対策用のコードを設定しないと動作しません。this.imagedrop.setRequestVerificationTokenIdName("__RequestVerificationToken")
+ *   のように、フレームワークに合わせてidを指定して下さい。
+ * ・upload時のサーバー側の戻り値として、成功時はfileNameを受け取り。失敗時はメッセージを受け取ってalert表示をするようにしています。サーバー側でも2重チェックをして下さい。
 
 # 使い方
 
-・html
+(例)html部分
 ```
 <html>
     <body>
@@ -30,7 +32,7 @@ Imagedrop  v2.0.1 (2021-07-26)     Licensed under the MIT license.
 </html>
 ```
         
-・javascript
+(例)javascript部分
 ```
 <script>
     // 通常
@@ -56,7 +58,7 @@ Imagedrop  v2.0.1 (2021-07-26)     Licensed under the MIT license.
 
 # テンプレートの仕組み
 																
-* HTMLに上記の使い方のformタグを設置することで、new Imagedrop() 時にform下に下記のテンプレートを展開
+* HTMLに上記の使い方のformタグを設置することで、new Imagedrop() 時にform下に下記のテンプレートを展開します。
 ```
 <form id="imagedrop" class="imagedrop" enctype="multipart/form-data"></form>
 
