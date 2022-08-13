@@ -1,19 +1,18 @@
 /*
- * Imagedrop.js  v2.0.1 (2021-07-28)
+ * Imagedrop.js  v2.0.3 (2022-03-06)
  *
- * Copyright 2021 yuchan.
+ * Copyright 2021 yuchan1.
  * Licensed under the MIT license.
  *
  * (javascriptライブラリの説明)
- * これはformタグ下に、画像ファイルをドラッグ＆ドロップ、またはダブルクリックして選択するエリアを提供するためのjavascriptの軽量なライブラリです。
+ * これはformタグ下に、画像ファイルをドラッグ＆ドロップ、またはダブルクリックして選択するエリアを提供し、画像をアップロードをするためのjavascriptの軽量なライブラリです。
  *
  * (前提条件)
  * ・imagedrop.jsとimagedrop.cssのファイルを読み込みしてください。
  * ・ファイルアップロードのPost処理にはaxiosを使用しています。axiosのライブラリをインストールして下さい。
- * ・Google ChromeまたはMicrosoft Edgeで動作します。IEは開発終了していますのでサポートしません。
+ * ・Google ChromeまたはMicrosoft Edgeで動作します。
  * ・CSRF対策用のコードを設定しないと動作しません。this.imagedrop.setRequestVerificationTokenIdName("__RequestVerificationToken")のように、フレームワークに合わせてidを指定して下さい。
- * ・upload時のサーバー側の戻り値として、成功時はfileNameを受け取り。失敗時はメッセージを受け取ってalert表示をするようにしています。サーバー側ではその処理を追加して下さい。
- * ・フレームワークに依存しないように作成しています。HTML中のプレーンなidとclassをメインで使用しています。Vue.jsと併用することも可能です。
+ * ・upload時のサーバー側の戻り値として、成功時はfileNameを受け取り。失敗時はメッセージを受け取ってalert表示をするようにしています。サーバー側でも2重チェックをして下さい。
  * 
  * (使い方)
  * ・html
@@ -53,14 +52,34 @@
  */
 
 class Imagedrop {
+    /*
+     *  constructor()                                           : constructor
+     *  
+     *  setUserCheck(isCheckedUser)                             : Set user check
+     *  setUploadUrl(uploadUrl)                                 : Set upload url
+     *  setDirectoryPath(directoryPath)                         : Set directory path
+     *  setRequestVerificationToken(requestVerificationToken)   : Set "RequestVerificationToken"
+     *  
+     *  setTransactionIdPropertyName(transactionIdPropertyName) : Set "transactionIdPropertyName"
+     *  setTransactionId(transactionId)                         : Set "transactionId
+     *  
+     *  isCheckedFile()                                         : (Run in class) Checked file
+     *  upload(dragAndDropMode)                                 : (Run in class) Upload. dragAndDropMode === true : drag and drop, dragAndDropMode === false : input change
+     *  
+     *  setFileName(fileName)                                   : Set file name
+     *  getFileName()                                           : Get file name
+     * 
+     */
+
     constructor() {
-        // ドラッグ＆ドロップ用のHTML準備
+        // Prepare HTML for drag and drop
         const template = "\n" +
             "<div class=\"drag-and-drop-area\" id=\"dragAndDropArea\">\n" +
             "    <input type=\"file\" id=\"files\" name=\"files\" accept=\"image/jpeg\" style=\"display: none\" multiple />\n" +
             "    <div class=\"default-message\" id=\"defaultMessage\">\n" +
             "        <p>画像ファイルをドラッグ＆ドロップ、またはダブルクリックして選択</p>\n" +
-            "        <p>(.jpgファイル、1MBまで)</p>\n" +
+            "        <p>Drag and drop the image file, or double-click to select it</p>\n" +
+            "        <p>(.jpg、max 1MB)</p>\n" +
             "    </div>\n" +
             "    <div class=\"preview-image\" id=\"previewImage\" style=\"display: none\"></div>\n" +
             "</div>\n";
@@ -70,7 +89,7 @@ class Imagedrop {
         dragAndDropArea ? dragAndDropArea.parentNode.removeChild(dragAndDropArea) : null;
         this._form.insertAdjacentHTML("afterbegin", template);
 
-        // thisに格納
+        // Store in this
         this._dragAndDropArea = document.getElementById("dragAndDropArea");
         this._inputFile = document.getElementById("files");
         this._defaultMessage = document.getElementById("defaultMessage");
@@ -90,7 +109,7 @@ class Imagedrop {
 
         this._fileName = null;
 
-        // addEventListenerで使用するため、thisをselfに退避
+        // Save this to self for use with addEventListener
         let _self = this;
 
         // addEventListener
@@ -110,14 +129,14 @@ class Imagedrop {
             event.preventDefault();
 
             if (!_self._isCheckedUser) {
-                alert("編集権限がありません。");
+                alert("編集権限がありません。 (You do not have edit permission.)");
                 return;
             }
 
             _self._files = event.dataTransfer.files;
 
             if (_self._fileName) {
-                alert("ファイルがアップロード済みのため実行できません。");
+                alert("ファイルがアップロード済みのため実行できません。 (The file has already been uploaded and cannot be executed.)");
                 return;
             }
 
@@ -128,12 +147,12 @@ class Imagedrop {
 
         this._dragAndDropArea.addEventListener("dblclick", function (event) {
             if (!_self._isCheckedUser) {
-                alert("編集権限がありません。");
+                alert("編集権限がありません。 (You do not have edit permission.)");
                 return;
             }
 
             if (_self._fileName) {
-                alert("ファイルがアップロード済みのため実行できません。");
+                alert("ファイルがアップロード済みのため実行できません。 (The file has already been uploaded and cannot be executed.)");
                 return;
             }
 
@@ -164,7 +183,7 @@ class Imagedrop {
         });
     }
 
-    setCheckedUser(isCheckedUser) {
+    setUserCheck(isCheckedUser) {
         this._isCheckedUser = isCheckedUser;
     }
 
@@ -176,8 +195,8 @@ class Imagedrop {
         this._directoryPath = directoryPath;
     }
 
-    setRequestVerificationTokenName(requestVerificationTokenName) {
-        this._requestVerificationTokenName = requestVerificationTokenName;
+    setRequestVerificationToken(requestVerificationToken) {
+        this._requestVerificationToken = requestVerificationToken;
     }
 
     setTransactionIdPropertyName(transactionIdPropertyName) {
@@ -192,31 +211,31 @@ class Imagedrop {
         const files = this._files;
 
         if (!files) {
-            alert("ファイルが見つからないためアップロードは実行できません。");
+            alert("ファイルが見つからないためアップロードは実行できません。 (The upload cannot be performed because the file cannot be found.)");
             return false;
         }
 
         if (files.length > 1) {
-            alert("複数ファイルのアップロードは実行できません。");
+            alert("複数ファイルのアップロードは実行できません。 (You cannot upload multiple files.)");
             return false;
         }
 
         let file = files[0];
         const fileName = file.name.toLowerCase();
-        const position = fileName.lastIndexOf('.');
-        const fileExtension = fileName.slice(position);
+        const pos = fileName.lastIndexOf('.');
+        const fileExtension = fileName.slice(pos);
 
         let fileType = file.type;
 
         if (fileExtension != ".jpg" || fileType != "image/jpeg") {
-            alert("jpg以外のファイルはアップロードは実行できません。");
+            alert("jpg以外のファイルはアップロードは実行できません。 (Files other than jpg cannot be uploaded.)");
             return false;
         }
 
         const fileSize = file.size / 1024 / 1024;
 
         if (fileSize > 1) {
-            alert("1MBより大きいサイズのファイルはアップロードは実行できません。");
+            alert("1MBより大きいサイズのファイルはアップロードは実行できません。 (Files larger than 1MB cannot be uploaded.)");
             return false;
         }
 
@@ -239,29 +258,27 @@ class Imagedrop {
             formData = new FormData(this._form);
         }
 
-        if (this.transactionIdPropertyName !== null) {
+        if (this._transactionIdPropertyName) {
             formData.append(this._transactionIdPropertyName, this._transactionId);
         }
 
-        const requestVerificationToken = document.getElementsByName(this._requestVerificationTokenName)[0].value;
-　
         // axios
         axios({
             method: "post",
             url: this._uploadUrl,
             headers: {
                 contentType: "multipart/form-data",
-                "RequestVerificationToken": requestVerificationToken
+                "RequestVerificationToken": this._requestVerificationToken
             },
             data: formData
         }).then((response) => {
-            const fileName = response.data.fileName;
+            const fileName = response.data["fileName"];
             _self.setFileName(fileName);
-            console.log("success");
+            console.log("File upload success");
         }).catch((response) => {
-            let message = response.data.message;
+            let message = response.data["message"];
             _self.setFileName(null);
-            console.log("failure : " + message);
+            console.log("File upload failure : " + message);
             alert(message);
         });
     }
@@ -275,6 +292,11 @@ class Imagedrop {
 
         // Image insert or remove
         if (status) {
+            // クリア
+            this._previewImage.innerHTML = "";
+            document.getElementById("files").value = "";
+
+            // 再セット
             const filePath = this._directoryPath + "/" + fileName;
 
             const imageHtml = "<img class=\"image\" id=\"image\" src=\"" + filePath + "\" style=\"width: " + this._size.width + "; height: " + this._size.height + "; \" />"
@@ -295,11 +317,11 @@ class Imagedrop {
             this._fileName = null;
         }
 
-        // focusが当たっていたらクリアする
+        // Delete if focus is on
         document.activeElement.blur();
 
-        // Fire event (表示領域の調整用)
-        let event = window.document.createEvent("UIEvents");
+        // Fire event (For adjusting the display area)
+        let event = window.document.createEvent("UIEvents");    // new Eventが現在の推奨方法
         event.initUIEvent("resize", true, false, window, 0);
         window.dispatchEvent(event);
     }
@@ -307,4 +329,4 @@ class Imagedrop {
     getFileName() {
         return this._fileName;
     }
-}
+};
