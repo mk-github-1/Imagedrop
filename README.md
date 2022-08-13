@@ -1,6 +1,6 @@
 # Imagedrop
 
-Imagedrop  v2.0.3 (2021-03-06)     Licensed under the MIT license.
+Imagedrop  v2.0.3 (2022-08-01)     Licensed under the MIT license.
 
 # javascriptライブラリの説明
 
