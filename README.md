@@ -10,14 +10,13 @@ Imagedrop  v2.0.3 (2022-08-01)     Licensed under the MIT license.
 
 ・imagedrop.jsとimagedrop.cssのファイルを読み込みしてください。
 
-・ファイルアップロードのPost処理にはaxiosを使用しています。axiosのライブラリをインストールして下さい。uploadUrlを正しく指定してPOSTができる状態でないとファイルアップロードは実行できません。
+・ファイルアップロードのPost処理にはaxiosを使用しています。axiosのライブラリをインストールして下さい。uploadUrlを正しく指定してPOSTができる状態でないとファイルアップロードは実行できません。　　
 →axiosのPost処理はversion 3で直アップロードをしないようにするため廃止予定
 
 ・Google ChromeまたはMicrosoft Edgeで動作します。
 
-・CSRF対策用のコードを設定しないと動作しません。this.imagedrop.setRequestVerificationTokenIdName("__RequestVerificationToken")
-
-  のように、フレームワークに合わせてidを指定して下さい。
+・CSRF対策用のコードを設定しないと動作しません。this.imagedrop.setRequestVerificationTokenIdName("__RequestVerificationToken")  
+のように、フレームワークに合わせてidを指定して下さい。
   
 ・upload時のサーバー側の戻り値として、成功時はfileNameを受け取り。失敗時はメッセージを受け取ってalert表示をするようにしています。サーバー側でも2重チェックをして下さい。
 
