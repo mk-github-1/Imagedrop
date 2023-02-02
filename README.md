@@ -10,8 +10,7 @@ Imagedrop  v2.0.3 (2022-08-01)     Licensed under the MIT license.
 
 ・imagedrop.jsとimagedrop.cssのファイルを読み込みしてください。
 
-・ファイルアップロードのPost処理にはaxiosを使用しています。axiosのライブラリをインストールして下さい。uploadUrlを正しく指定してPOSTができる状態でないとファイルアップロードは実行できません。　　
-→axiosのPost処理はversion 3で直アップロードをしないようにするため廃止予定
+・ファイルアップロードのPost処理にはaxiosを使用しています。axiosのライブラリをインストールして下さい。uploadUrlを正しく指定してPOSTができる状態でないとファイルアップロードは実行できません。
 
 ・Google ChromeまたはMicrosoft Edgeで動作します。
 
